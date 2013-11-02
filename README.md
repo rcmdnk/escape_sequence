@@ -18,3 +18,7 @@ Check 256 colors.
 
 * [Cygwin+screenで256 colorを有効にする](http://rcmdnk.github.io/blog/2013/09/05/computer-cygwin-putty-vim/)
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rcmdnk/escape_sequence/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
