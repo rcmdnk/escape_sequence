@@ -15,11 +15,11 @@ If you have [brewall](https://github.com/rcmdnk/homebrew-brewall), add following
     tap 'rcmdnk/rcmdnkpac'
     brew 'escape_sequence'
 
-then, d 
+then, do:
 
     $ brewall install
 
-Or if you write
+Or if you write like:
 
     tapall 'rcmdnk/rcmdnkpac'
 
