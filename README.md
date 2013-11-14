@@ -3,7 +3,30 @@ escape_sequence
 
 Scripts for checking escape sequences.
 
-# Introduction
+# Installation
+
+On Mac, you can install scripts by [Homebrew](https://github.com/mxcl/homebrew):
+
+    $ brew tap rcmdnk/rcmdnkpac
+    $ brew install escape_sequence
+
+If you have [brewall](https://github.com/rcmdnk/homebrew-brewall), add following lines to Brewfile:
+
+    tap 'rcmdnk/rcmdnkpac'
+    brew 'escape_sequence'
+
+then, d 
+
+    $ brewall install
+
+Or if you write
+
+    tapall 'rcmdnk/rcmdnkpac'
+
+and do `brewall install`, you will have all useful scripts in
+[rcmdnkpac](https://github.com/rcmdnk/homebrew-rcmdnkpac).
+
+You can also use an install script on the web like:
 
     $ curl -fsSL https://raw.github.com/rcmdnk/escape_sequence/install/install.sh| sh
 
