@@ -22,16 +22,27 @@
 #CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #}}}
 
-bg=40
-if [ "$1" != "" ];then
-  if [ "$1" = "white" ] || [ "$1" = "w" ];then
-    bg=47
+cols=(black red green yellow blue magenta cyan white)
+
+back=-1
+if [ "$#" -ne 0 ];then
+  for ((i=0; i<${#cols[@]}; ++i));do
+    if [ "$1" = ${cols[$i]} ];then
+      back=$1
+      break
+    fi
+  done
+  if [ $back -eq -1 ];then
+    back=$1
   fi
+fi
+if [ $back -eq -1 ];then
+  back=0
 fi
 
 for i in {0..255}; do
   num=`printf "%03d" $i`
-  printf " \e[${bg};38;05;${i}m${num}\e[m"
+  printf " \e[48;05;$back;38;05;${i}m${num}\e[m"
   if [ $((${i}%16)) -eq 15 ];then
     echo
   fi
