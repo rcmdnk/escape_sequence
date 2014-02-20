@@ -31,7 +31,7 @@ simple=0
 # }}}
 
 # Help {{{
-HELP="Usage: $0 command
+HELP="Usage: $(basename $0) command
 
 Commands:
   fg     (-f) : Set foreground color (default $fore)
@@ -182,7 +182,7 @@ while [ $# != 0 ] ; do
       simple=1
       ;;
     -i|info)
-      echo "$INFO" 1>&2; exit 0
+      echo "$INFO"|${PAGER:-less} 1>&2; exit 0
       ;;
     -h|help)
       echo "$HELP" 1>&2; exit 0
