@@ -188,7 +188,7 @@ while [ $# != 0 ] ; do
       echo "$HELP" 1>&2; exit 0
       ;;
     *)
-      echo $1: unknown argument; echo; echo "$HELP" 1>&2; exit 1
+      echo $(basename $0) $1: unknown argument; echo; echo "$HELP" 1>&2; exit 1
   esac
   shift
 done
