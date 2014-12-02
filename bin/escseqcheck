@@ -31,7 +31,7 @@ simple=0
 # }}}
 
 # Help {{{
-HELP="Usage: $(basename $0) command
+HELP="Usage: $(basename "$0") command
 
 Commands:
   fg     (-f) : Set foreground color (default $fore)
@@ -188,7 +188,7 @@ while [ $# != 0 ] ; do
       echo "$HELP" 1>&2; exit 0
       ;;
     *)
-      echo $(basename $0) $1: unknown argument; echo; echo "$HELP" 1>&2; exit 1
+      echo "$(basename "$0")" "$1": unknown argument; echo; echo "$HELP" 1>&2; exit 1
   esac
   shift
 done
@@ -197,9 +197,9 @@ done
 # all escs {{{
 function escs {
   for i in {0..64};do
-    num=`printf "%02d" $i`
-    printf " \e[${col}${i}m$num\e[m"
-    if [ $(($i%10)) -eq 9 ];then
+    num=$(printf "%02d" $i)
+    printf " \e[%s%dm%s\e[m" "$col" "$i" "$num"
+    if [ $((i%10)) -eq 9 ];then
       echo
     fi
     if [ $i -ge 10 ] && [ $i -le 20 ];then
@@ -211,9 +211,9 @@ function escs {
 # simple {{{
 function escs_simple {
   for i in {30..49};do
-    num=`printf "%02d" "$i"`
-    printf " \e[${col}${i}m$num\e[m"
-    if [ $(($i%10)) -eq 9 ];then
+    num=$(printf "%02d" "$i")
+    printf " \e[%s%dm%s\e[m" "$col" "$i" "$num"
+    if [ $((i%10)) -eq 9 ];then
       echo
     fi
     i=$((i+1))
@@ -221,7 +221,7 @@ function escs_simple {
 } # }}}
 
 # Set colors
-printf "Foreground: $fore, Background: $back, "
+printf "Foreground: %d, Background: %d, " "$fore" "$back"
 col="3${fore};4${back};"
 if [ $bold -eq 1 ];then 
   printf "Bold (1) on, "

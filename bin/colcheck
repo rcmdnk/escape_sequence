@@ -32,18 +32,18 @@ if [ "$#" -ne 0 ];then
       break
     fi
   done
-  if [ $back -eq -1 ];then
+  if [ "$back" -eq -1 ];then
     back=$1
   fi
 fi
-if [ $back -eq -1 ];then
+if [ "$back" -eq -1 ];then
   back=0
 fi
 
 for i in {0..255}; do
-  num=`printf "%03d" $i`
-  printf " \e[48;05;$back;38;05;${i}m${num}\e[m"
-  if [ $((${i}%16)) -eq 15 ];then
+  num=$(printf "%03d" $i)
+  printf " \e[48;05;%d;38;05;%dm%s\e[m" "$back" "$i" "$num"
+  if [ $((i%16)) -eq 15 ];then
     echo
   fi
 done
@@ -55,5 +55,5 @@ echo '    $ words="red color"'
 echo '    $ printf "\e[38;05;${col}m${words}\e[m"'
 col=1
 words="red color"
-printf "    \e[38;05;${col}m${words}\e[m"
+printf "    \e[38;05;%dm%s\e[m" "$col" "$words"
 echo
