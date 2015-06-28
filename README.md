@@ -3,7 +3,7 @@ escape_sequence
 
 Scripts for checking escape sequences.
 
-# Installation
+## Installation
 
 On Mac, you can install scripts by [Homebrew](https://github.com/mxcl/homebrew):
 
@@ -39,17 +39,17 @@ If you want to install other directory, do like:
 
 Or, simply download scripts and set where you like.
 
-# Usage
+## Usage
 
-## bin/escseqcheck
+### bin/escseqcheck
 
 Show results of escape sequences.
 
-## bin/colcheck
+### bin/colcheck
 
 Check 256 colors.
 
 
-# References
+## References
 
 * [Cygwin+screenで256 colorを有効にする](http://rcmdnk.github.io/blog/2013/09/05/computer-cygwin-putty-vim/)
