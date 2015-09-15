@@ -38,7 +38,7 @@ Commands:
   bg     (-b) : Set background color (default $back)
   bold   (-B) : Use Bold
   faint  (-F) : Use Faint
-  simple (-S) : Show simple 8 fore/back colors
+  simple (-s) : Show simple 8 fore/back colors
   info   (-i) : Show escape sequence information
   help   (-h) : Show this message.
 
