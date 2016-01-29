@@ -26,7 +26,7 @@ cols=(black red green yellow blue magenta cyan white)
 
 back=-1
 if [ "$#" -ne 0 ];then
-  for ((i=0; i<${#cols[@]}; ++i));do
+  for i in $(seq 0 $((${#cols[@]}-1)));do
     if [ "$1" = ${cols[$i]} ];then
       back=$1
       break
