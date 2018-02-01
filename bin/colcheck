@@ -24,16 +24,36 @@
 
 cols=(black red green yellow blue magenta cyan white)
 
-back=-1
-if [ "$#" -ne 0 ];then
+echo $#
+col=-1
+if [ "$#" -gt 0 ];then
   for i in $(seq 0 $((${#cols[@]}-1)));do
-    if [ "$1" = ${cols[$i]} ];then
-      back=$1
+    if [ "$1" = "${cols[$i]}" ];then
+      col=$1
+      break
+    fi
+  done
+  if [ "$col" -eq -1 ];then
+    if expr "$1" : '[0-9]*' >& /dev/null;then
+      col=$1
+    fi
+  fi
+fi
+if [ "$col" -eq -1 ];then
+  col=7
+fi
+back=-1
+if [ "$#" -gt 1 ];then
+  for i in $(seq 0 $((${#cols[@]}-1)));do
+    if [ "$2" = "${cols[$i]}" ];then
+      back=$2
       break
     fi
   done
   if [ "$back" -eq -1 ];then
-    back=$1
+    if expr "$2" : '[0-9]*' >& /dev/null;then
+      back=$2
+    fi
   fi
 fi
 if [ "$back" -eq -1 ];then
@@ -42,18 +62,21 @@ fi
 
 for i in {0..255}; do
   num=$(printf "%03d" $i)
-  printf " \e[48;05;%d;38;05;%dm%s\e[m" "$back" "$i" "$num"
-  if [ $((i%16)) -eq 15 ];then
+  printf "\e[38;05;%d;48;05;%dm%s\e[m" "$i" "$back" "$num"
+  printf "\e[38;05;%d;48;05;%dm%s\e[m " "$col" "$i" "$num"
+  if [ $((i%8)) -eq 7 ];then
     echo
   fi
 done
 
 echo ''
-echo 'Use like:'
-echo '    $ col=1'
-echo '    $ words="red color"'
-echo '    $ printf "\e[38;05;${col}m${words}\e[m"'
 col=1
-words="red color"
-printf "    \e[38;05;%dm%s\e[m" "$col" "$words"
+back=3
+words="red words on yellow background"
+echo "Use like:"
+echo "    $ col=$col # red"
+echo "    $ back=$back # yellow"
+echo "    $ words=\"$words\""
+echo '    $ printf "\e[38;05;%d;48;05;%dm%s\e[m" "$col" "$back" "$words"'
+printf "    \e[38;05;%d;48;05;%dm%s\e[m" "$col" "$back" "$words"
 echo
