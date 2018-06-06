@@ -32,4 +32,5 @@ for s in ${scripts[@]};do
   sname=`basename $s`
   echo Intalling ${sname}...
   $sudo curl -fsSL -o $prefix/bin/$sname $s
+  $sudo chmod 755 $prefix/bin/$sname
 done
