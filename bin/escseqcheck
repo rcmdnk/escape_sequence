@@ -182,7 +182,12 @@ while [ $# != 0 ] ; do
       simple=1
       ;;
     -i|info)
-      echo "$INFO"|${PAGER:-less} 1>&2; exit 0
+      if [ -t 1 ];then
+        echo "$INFO"|${PAGER:-less}
+      else
+        echo "$INFO"
+      fi
+      exit 0
       ;;
     -h|help)
       echo "$HELP" 1>&2; exit 0
