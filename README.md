@@ -45,10 +45,13 @@ Or, simply download scripts and set where you like.
 
 Show results of escape sequences.
 
-### bin/colcheck
+### bin/256colors
 
 Check 256 colors.
 
+### bin/colcheck
+
+Check Ansi colors,  256 colors and 24 bit true colors.
 
 ## References
 
